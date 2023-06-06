@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function ModalArquivos() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [fileInputs, setFileInputs] = useState([0]);
+  const [mensagem, setMensagem] = useState('');
 
   const adicionarCampoArquivo = () => {
     setFileInputs(prevInputs => [...prevInputs, prevInputs.length]);
@@ -18,6 +19,10 @@ function ModalArquivos() {
     // Lógica para salvar os arquivos
     setModalOpen(false);
     setFileInputs([0]); // Limpar os campos de arquivo
+    setMensagem('Arquivos Adicionados');
+    setTimeout(() => {
+      setMensagem('');
+    }, 5000); // 5 segundos na tela
   };
 
   return (
@@ -66,6 +71,13 @@ function ModalArquivos() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Mensagem de sucesso */}
+      {mensagem && (
+        <div className="alert alert-success position-fixed top-0 end-0 m-3" role="alert">
+          {mensagem}
         </div>
       )}
     </div>
