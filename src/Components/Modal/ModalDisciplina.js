@@ -4,10 +4,16 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function ModalDisciplina() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [mensagem, setMensagem] = useState('');
 
   const handleSalvar = () => {
     // Lógica para salvar os dados do formulário
     setModalOpen(false);
+    setMensagem('Disciplina Adicionada');
+    // Limpar a mensagem após alguns segundos
+    setTimeout(() => {
+      setMensagem('');
+    }, 5000);
   };
 
   return (
@@ -46,6 +52,13 @@ function ModalDisciplina() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Mensagem de sucesso */}
+      {mensagem && (
+        <div className="alert alert-success position-fixed top-0 end-0 m-3" role="alert">
+          {mensagem}
         </div>
       )}
     </div>
