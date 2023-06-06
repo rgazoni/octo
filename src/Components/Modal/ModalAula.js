@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 function ModalAula() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [fileInputs, setFileInputs] = useState([0]);
+  const [mensagem, setMensagem] = useState('');
 
   const adicionarCampoArquivo = () => {
     setFileInputs(prevInputs => [...prevInputs, prevInputs.length]);
@@ -17,6 +18,10 @@ function ModalAula() {
   const handleSalvar = () => {
     // Lógica para salvar os dados do formulário
     setModalOpen(false);
+    setMensagem('Aula Adicionada');
+    setTimeout(() => {
+      setMensagem('');
+    }, 5000); // 5 segundos na tela
   };
 
   return (
@@ -69,6 +74,13 @@ function ModalAula() {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Mensagem de sucesso */}
+      {mensagem && (
+        <div className="alert alert-success position-fixed top-0 end-0 m-3" role="alert">
+          {mensagem}
         </div>
       )}
     </div>
