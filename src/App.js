@@ -9,7 +9,9 @@ function App() {
             <Col id="sidebar-wrapper" className="bg-dark col-sm-2">
               <Sidebar />
             </Col>
-            <Col id="page-content-wrapper" className="bg-white"></Col>
+            <Col id="page-content-wrapper" className="bg-white">
+            <CardAula/>
+            </Col>
         </Row>
     </Container>
     </>
