@@ -6,10 +6,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from 'react';
 import './CardStyle.css';
 
-
-// teste
-import Form from 'react-bootstrap/Form';
-
 let nomeAula;
 // let desc;
 let listaDisciplinas = [];
@@ -37,8 +33,6 @@ function imprimeAulas(){
       console.log(listaDisciplinas);
     }
 }
-
-
 
 export default function CardAula() {
 
@@ -88,19 +82,6 @@ export default function CardAula() {
         
         </Card.Body>
     </Card>
-
-    {/* criação de uum forms para testes com o card */}
-    <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control id="nome" type="email" placeholder="name@example.com" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Example textarea</Form.Label>
-        <Form.Control as="textarea" rows={3} />
-      </Form.Group>
-      <Button variant="dark" onClick={adicionaAula}>+ Arquivo</Button>
-    </Form>
     </div>
 
 
@@ -119,3 +100,4 @@ export default function CardAula() {
    </> 
   )
 }
+
