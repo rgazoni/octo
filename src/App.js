@@ -1,3 +1,4 @@
+import ModalDisciplina from "./Components/Modal/ModalDisciplina";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import { Col, Container, Row } from 'react-bootstrap'
 import CardAula from "./Components/Cards/CardAula";
@@ -34,5 +35,4 @@ function App() {
     </>
   );
 }
-
 export default App;

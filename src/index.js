@@ -1,11 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ReactDOM from 'react-dom';
+import ModalDisciplina from "./Components/Modal/ModalDisciplina";
+/*import ModalArquivos from './Components/Modal/ModalArquivos';
+import ModalAula from './Components/Modal/ModalAula';*/
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ModalDisciplina />
+    {/* <ModalArquivos/> 
+    <ModalAula/> */}
+  </React.StrictMode>,
+  document.getElementById('root')
 );
