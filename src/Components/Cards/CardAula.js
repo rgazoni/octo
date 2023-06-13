@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from 'react';
 import './CardAula.css';
+import ModalAula from '../Modal/ModalAula';
 
 let nomeAula;
-// let desc;
 let listaDisciplinas = [];
 
 function adicionaAula() {
@@ -39,12 +39,16 @@ export default function CardAula() {
   // Cria cards dinamicamente
   const [cards, setCards] = useState([]);
 
-  function adicionarCard() {
+  const funca = () => {
+    <ModalAula />
+  }
+
+  function adicionarCard(data) {
     const novoCard = (
       <Card className="w-75 p-3 shadow p-3 mb-5 bg-body-tertiary">
         <Card.Header className="d-flex justify-content-between">
           <span className="align-middle">
-            <h2>{nomeAula}</h2>
+            <h2>{data.aula}</h2>
           </span>
           <Button variant="dark">Adicionar Arquivo</Button>
         </Card.Header>
@@ -52,25 +56,20 @@ export default function CardAula() {
         <Card.Body>
           <Card.Text>
             <ul>
-              {/* Lista de disciplinas */}
+              <p>{data.arq}</p>
             </ul>
           </Card.Text>
         </Card.Body>
       </Card>
     );
 
-    setCards(prevCards => [...prevCards, novoCard]);
+    setCards(cards => [...cards, novoCard]);
+
   }
 
   return (
     <>
-
-      <div id='addClass' className='pt-4'>
-        <Button variant="dark" onClick={adicionarCard}>
-          Adicionar Aula
-        </Button>
-      </div>
-
+      <ModalAula saveCard={adicionarCard} />
 
       <div className="cards-container d-flex flex-column align-items-end">
         {cards.map((card, index) => (

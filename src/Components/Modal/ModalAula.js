@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Button from 'react-bootstrap/Button';
 
-function ModalAula() {
+function ModalAula(props) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [fileInputs, setFileInputs] = useState([0]);
   const [mensagem, setMensagem] = useState('');
+  const [aula, setAula] = useState('');
+  const [arq, setArq] = useState('');
 
+  if (props.modalOpen === 'true') {
+    console.log()
+    setModalOpen(true);
+  }
+    
   const adicionarCampoArquivo = () => {
     setFileInputs(prevInputs => [...prevInputs, prevInputs.length]);
   };
@@ -15,7 +23,19 @@ function ModalAula() {
     setFileInputs(prevInputs => prevInputs.filter((_, i) => i !== index));
   };
 
+
+
   const handleSalvar = () => {
+
+    const data ={
+      'aula': aula,
+      'arq': arq
+    }
+    props.saveCard(data);
+
+    setArq('');
+    setAula('');
+
     // Lógica para salvar os dados do formulário
     setModalOpen(false);
     setMensagem('Aula Adicionada');
@@ -27,13 +47,11 @@ function ModalAula() {
   return (
     <div>
       {/* Botão para abrir o modal */}
-      <button
-        type="button"
-        className="btn btn-primary modal-button"
-        onClick={() => setModalOpen(true)}
-      >
-        Modal
-      </button>
+      <div id='addClass' className='pt-4'>
+        <Button variant="dark" onClick={() => setModalOpen(true)}>
+          Adicionar Aula
+        </Button>
+      </div>
 
       {/* Modal */}
       {isModalOpen && (
@@ -47,14 +65,14 @@ function ModalAula() {
               <div className="modal-body">
                 <div className="mb-3">
                   <label htmlFor="nomeAula" className="form-label">Nome:</label>
-                  <input type="text" className="form-control" id="nomeAula" />
+                  <input type="text" className="form-control" id="nomeAula" onChange={() => setAula(document.getElementById("nomeAula").value)}/>
                 </div>
                 <div id="arquivosContainer">
                   {fileInputs.map((index) => (
                     <div className="mb-3" key={index}>
                       <label htmlFor={`arquivosAula${index}`} className="form-label">Arquivos:</label>
                       <div className="input-group">
-                        <input type="file" className="form-control" name={`arquivosAula${index}[]`} multiple />
+                        <input type="file" className="form-control" name={`arquivosAula${index}[]`} id='puca' onChange={() => setArq(document.getElementById("puca").value)} multiple />
                         <button
                           type="button"
                           className="btn btn-danger"
